@@ -256,7 +256,7 @@ for count in range(100):
 
     # RW_sep_lr
 
-    #alpha = random.uniform(a_min, a_max) #@TODO: check if the alpha and alpha neg are very similar
+    #alpha = random.uniform(a_min, a_max)
     #alpha_neg = random.uniform(0.4, a_max)
     #alpha_neg=alpha_neg-0.4
     #beta = np.random.exponential(1)+1

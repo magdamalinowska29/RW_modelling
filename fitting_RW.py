@@ -2,7 +2,8 @@ import pandas as pd
 
 from models.Rescorla_Wagner_model import Rescorla_Wagner_model
 
-paths_act=['C:/Users/magda/PycharmProjects/trial_pymdp/data/1111_pe_i_example_results_action_observation.csv',
+paths_act=[
+           'C:/Users/magda/PycharmProjects/trial_pymdp/data/1111_pe_i_example_results_action_observation.csv',
            'C:/Users/magda/PycharmProjects/trial_pymdp/data/3580_pe_i_example_results_action_observation.csv',
            'C:/Users/magda/PycharmProjects/trial_pymdp/data/4108_pe_i_example_results_action_observation.csv',
            'C:/Users/magda/PycharmProjects/trial_pymdp/data/4564_pe_i_example_results_action_observation.csv',
@@ -12,9 +13,12 @@ paths_act=['C:/Users/magda/PycharmProjects/trial_pymdp/data/1111_pe_i_example_re
            'C:/Users/magda/PycharmProjects/trial_pymdp/data/5419_pe_i_example_results_action_observation.csv',
            'C:/Users/magda/PycharmProjects/trial_pymdp/data/5620_pe_i_example_results_action_observation.csv',
            'C:/Users/magda/PycharmProjects/trial_pymdp/data/5629_pe_i_example_results_action_observation.csv',
-           'C:/Users/magda/PycharmProjects/trial_pymdp/data/5764_pe_i_example_results_action_observation.csv']
+           'C:/Users/magda/PycharmProjects/trial_pymdp/data/5764_pe_i_example_results_action_observation.csv',
+           'C:/Users/magda/PycharmProjects/trial_pymdp/data/3619_pe_i_example_results_action_observation.csv',
+           'C:/Users/magda/PycharmProjects/trial_pymdp/data/5539_pe_i_example_results_action_observation.csv']
 
-paths_change=['C:/Users/magda/PycharmProjects/trial_pymdp/data/1111_pe_i_example_results_new.csv',
+paths_change=[
+           'C:/Users/magda/PycharmProjects/trial_pymdp/data/1111_pe_i_example_results_new.csv',
            'C:/Users/magda/PycharmProjects/trial_pymdp/data/3580_pe_i_example_results_new.csv',
            'C:/Users/magda/PycharmProjects/trial_pymdp/data/4108_pe_i_example_results_new.csv',
            'C:/Users/magda/PycharmProjects/trial_pymdp/data/4564_pe_i_example_results_new.csv',
@@ -24,7 +28,39 @@ paths_change=['C:/Users/magda/PycharmProjects/trial_pymdp/data/1111_pe_i_example
            'C:/Users/magda/PycharmProjects/trial_pymdp/data/5419_pe_i_example_results_new.csv',
            'C:/Users/magda/PycharmProjects/trial_pymdp/data/5620_pe_i_example_results_new.csv',
            'C:/Users/magda/PycharmProjects/trial_pymdp/data/5629_pe_i_example_results_new.csv',
-           'C:/Users/magda/PycharmProjects/trial_pymdp/data/5764_pe_i_example_results_new.csv']
+           'C:/Users/magda/PycharmProjects/trial_pymdp/data/5764_pe_i_example_results_new.csv',
+           'C:/Users/magda/PycharmProjects/trial_pymdp/data/3619_pe_i_example_results_new.csv',
+           'C:/Users/magda/PycharmProjects/trial_pymdp/data/5539_pe_i_example_results_new.csv']
+'''
+paths_act=[
+           'C:/Users/magda/PycharmProjects/trial_pymdp/data/1111_r_i_example_results_action_observation.csv',
+           'C:/Users/magda/PycharmProjects/trial_pymdp/data/3580_r_i_example_results_action_observation.csv',
+           'C:/Users/magda/PycharmProjects/trial_pymdp/data/4108_r_i_example_results_action_observation.csv',
+           'C:/Users/magda/PycharmProjects/trial_pymdp/data/4564_r_i_example_results_action_observation.csv',
+           'C:/Users/magda/PycharmProjects/trial_pymdp/data/4870_r_i_example_results_action_observation.csv',
+           'C:/Users/magda/PycharmProjects/trial_pymdp/data/5119_r_i_example_results_action_observation.csv',
+           'C:/Users/magda/PycharmProjects/trial_pymdp/data/5233_r_i_example_results_action_observation.csv',
+           'C:/Users/magda/PycharmProjects/trial_pymdp/data/5419_r_i_example_results_action_observation.csv',
+           'C:/Users/magda/PycharmProjects/trial_pymdp/data/5620_r_i_example_results_action_observation.csv',
+           'C:/Users/magda/PycharmProjects/trial_pymdp/data/5629_r_i_example_results_action_observation.csv',
+           'C:/Users/magda/PycharmProjects/trial_pymdp/data/5764_r_i_example_results_action_observation.csv',
+    'C:/Users/magda/PycharmProjects/trial_pymdp/data/3619_r_i_example_results_action_observation.csv',
+    'C:/Users/magda/PycharmProjects/trial_pymdp/data/5539_r_i_example_results_action_observation.csv']
+
+paths_change=[
+              'C:/Users/magda/PycharmProjects/trial_pymdp/data/1111_r_i_example_results_new.csv',
+           'C:/Users/magda/PycharmProjects/trial_pymdp/data/3580_r_i_example_results_new.csv',
+           'C:/Users/magda/PycharmProjects/trial_pymdp/data/4108_r_i_example_results_new.csv',
+           'C:/Users/magda/PycharmProjects/trial_pymdp/data/4564_r_i_example_results_new.csv',
+           'C:/Users/magda/PycharmProjects/trial_pymdp/data/4870_r_i_example_results_new.csv',
+           'C:/Users/magda/PycharmProjects/trial_pymdp/data/5119_r_i_example_results_new.csv',
+           'C:/Users/magda/PycharmProjects/trial_pymdp/data/5233_r_i_example_results_new.csv',
+           'C:/Users/magda/PycharmProjects/trial_pymdp/data/5419_r_i_example_results_new.csv',
+           'C:/Users/magda/PycharmProjects/trial_pymdp/data/5620_r_i_example_results_new.csv',
+           'C:/Users/magda/PycharmProjects/trial_pymdp/data/5629_r_i_example_results_new.csv',
+           'C:/Users/magda/PycharmProjects/trial_pymdp/data/5764_r_i_example_results_new.csv',
+    'C:/Users/magda/PycharmProjects/trial_pymdp/data/3619_r_i_example_results_new.csv',
+    'C:/Users/magda/PycharmProjects/trial_pymdp/data/5539_r_i_example_results_new.csv']'''
 
 lr_val=[]
 
@@ -119,6 +155,6 @@ dict = {'lr': lr_val,  'temp': temp_val, 'LL': LL_val, 'BIC': BIC_val, 'AIC': AI
 
 df = pd.DataFrame(dict)
 
-df.to_csv('data/fitting_RW_results_pe_i.csv')
+df.to_csv('data/fitting_RW_results_pe_i_real.csv')
 
 
