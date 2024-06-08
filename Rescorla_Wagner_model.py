@@ -1027,36 +1027,41 @@ class Rescorla_Wagner_model():
 
         #init_guess_2=np.random.exponential(1)+1
 
-        init_guess_1 = random.uniform(0.2, 1)
-        init_guess_2 = random.uniform(2, 12)
+        NegLL = 1000
 
-        #init_guess_1 = np.random.normal(loc=0.63, scale=0.2)
-        #init_guess_2 = np.random.normal(loc=9, scale=4)
+        for i in range(3):
 
-        #init_guess_1_X = get_truncated_normal(mean=0.3083119283, sd=0.1566426521, low=0.2, upp=1)
-        #init_guess_1=init_guess_1_X.rvs()
+            init_guess_1 = random.uniform(0.2, 1)
+            init_guess_2 = random.uniform(2, 12)
 
-        #init_guess_2_X = get_truncated_normal(mean=7.357686568, sd=4.175147737, low=2, upp=12)
-        #init_guess_2=init_guess_2_X.rvs()
+            #init_guess_1 = np.random.normal(loc=0.63, scale=0.2)
+            #init_guess_2 = np.random.normal(loc=9, scale=4)
 
-        #alpha_X = get_truncated_normal(mean=0.404, sd=0.2739901864, low=0, upp=1)
-        #init_guess_1 = alpha_X.rvs()
+            #init_guess_1_X = get_truncated_normal(mean=0.3083119283, sd=0.1566426521, low=0.2, upp=1)
+            #init_guess_1=init_guess_1_X.rvs()
 
-        #beta_X = get_truncated_normal(mean=6.261, sd=3.91077537, low=1, upp=100)
-        #init_guess_2 = beta_X.rvs()
+            #init_guess_2_X = get_truncated_normal(mean=7.357686568, sd=4.175147737, low=2, upp=12)
+            #init_guess_2=init_guess_2_X.rvs()
 
-        #init_guess_1 = np.random.normal(loc=0.26051991, scale=0.223883188)
-        #init_guess_2 = np.random.normal(loc=13.30012029, scale=11.09702797)
+            #alpha_X = get_truncated_normal(mean=0.404, sd=0.2739901864, low=0, upp=1)
+            #init_guess_1 = alpha_X.rvs()
 
-        X0 = [init_guess_1, init_guess_2];
+            #beta_X = get_truncated_normal(mean=6.261, sd=3.91077537, low=1, upp=100)
+            #init_guess_2 = beta_X.rvs()
+
+            #init_guess_1 = np.random.normal(loc=0.26051991, scale=0.223883188)
+            #init_guess_2 = np.random.normal(loc=13.30012029, scale=11.09702797)
+
+            X0 = [init_guess_1, init_guess_2];
 
 
-        res=minimize(fun=obFunc,x0=X0, method='L-BFGS-B',bounds=[(0.2,1),(2, 12)])
-        #res = minimize(fun=obFunc, x0=X0, method='SLSQP')
+            res=minimize(fun=obFunc,x0=X0, method='L-BFGS-B',bounds=[(0.2,1),(2, 12)])
+            #res = minimize(fun=obFunc, x0=X0, method='SLSQP')
 
-        NegLL=res.fun
+            if res.fun < NegLL:
+                NegLL = res.fun
 
-        Xfit=res.x
+                Xfit = res.x
 
         LL = -NegLL
         BIC = len(X0) * np.log(len(a)) + 2 * NegLL

@@ -723,33 +723,38 @@ class Rescorla_Wagner_CK_model():
         init_guess_3 = random.random()
         init_guess_4 = np.random.exponential(1)+1'''
 
+        NegLL = 1000
 
-        #init_guess_1 = random.uniform(0.2, 1)
-        #init_guess_2 = random.uniform(2, 12)  # draw values from th distribution based on the subject fits
-        #init_guess_3 = random.uniform(0.2, 1)
-        #init_guess_4 = random.uniform(2, 12)
-
-        alpha_X = get_truncated_normal(mean=0.5664515917, sd=0.3169843578, low=0, upp=1)
-        init_guess_1 = alpha_X.rvs()
-
-        beta_X = get_truncated_normal(mean=5.174611978, sd=2.975011374, low=1, upp=100)
-        init_guess_2 = beta_X.rvs()
-
-        alpha_X_c = get_truncated_normal(mean=0.3128277583, sd=0.1547298159, low=0, upp=1)
-        init_guess_3 = alpha_X_c.rvs()
-
-        beta_X_c = get_truncated_normal(mean=3.279238993, sd=2.056496848, low=1, upp=100)
-        init_guess_4 = beta_X_c.rvs()
-
-        X0 = [init_guess_1, init_guess_2, init_guess_3, init_guess_4];
+        for i in range(3):
 
 
-        res = minimize(fun=obFunc, x0=X0, method='L-BFGS-B', bounds=[(0, 1), (1,100), (0, 1), (1,100)])
-        # res = minimize(fun=obFunc, x0=X0, method='L-BFGS-B')
+            init_guess_1 = random.uniform(0.2, 1)
+            init_guess_2 = random.uniform(2, 12)  # draw values from th distribution based on the subject fits
+            init_guess_3 = random.uniform(0.2, 1)
+            init_guess_4 = random.uniform(2, 12)
 
-        NegLL = res.fun
+            #alpha_X = get_truncated_normal(mean=0.5664515917, sd=0.3169843578, low=0, upp=1)
+            #init_guess_1 = alpha_X.rvs()
 
-        Xfit = res.x
+            #beta_X = get_truncated_normal(mean=5.174611978, sd=2.975011374, low=1, upp=100)
+            #init_guess_2 = beta_X.rvs()
+
+            #alpha_X_c = get_truncated_normal(mean=0.3128277583, sd=0.1547298159, low=0, upp=1)
+            #init_guess_3 = alpha_X_c.rvs()
+
+            #beta_X_c = get_truncated_normal(mean=3.279238993, sd=2.056496848, low=1, upp=100)
+            #init_guess_4 = beta_X_c.rvs()
+
+            X0 = [init_guess_1, init_guess_2, init_guess_3, init_guess_4];
+
+
+            res = minimize(fun=obFunc, x0=X0, method='L-BFGS-B', bounds=[(0.2, 1), (2,12), (0.2, 1), (2,12)])
+            # res = minimize(fun=obFunc, x0=X0, method='L-BFGS-B')
+
+            if res.fun < NegLL:
+                NegLL = res.fun
+
+                Xfit = res.x
 
         LL=-NegLL
         BIC = len(X0) * np.log(len(a)) + 2 * NegLL

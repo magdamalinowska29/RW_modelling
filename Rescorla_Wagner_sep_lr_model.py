@@ -931,46 +931,51 @@ class Rescorla_Wagner_sep_lr_model():
 
         #init_guess_3=np.random.exponential(1)
 
-        #init_guess_1 = random.uniform(0.2, 1)
-        #init_guess_2 = random.uniform(0, 0.6)
-        #init_guess_3 = random.uniform(2, 12)
+        NegLL = 1000
 
-        init_guess_1_X = get_truncated_normal(mean=0.7018621375, sd=0.2555028194, low=0, upp=1)
-        init_guess_1 = init_guess_1_X.rvs()
+        for i in range(3):
 
-        init_guess_2_X = get_truncated_normal(mean=0.3083247317, sd=0.1569015222, low=0, upp=1)
-        init_guess_2 = init_guess_2_X.rvs()
+            init_guess_1 = random.uniform(0.2, 1)
+            init_guess_2 = random.uniform(0.2,1)
+            init_guess_3 = random.uniform(2, 12)
 
-        init_guess_3_X = get_truncated_normal(mean=5.766115643, sd=2.218477811, low=1, upp=100)
-        init_guess_3 = init_guess_3_X.rvs()
+            #init_guess_1_X = get_truncated_normal(mean=0.7018621375, sd=0.2555028194, low=0, upp=1)
+            #init_guess_1 = init_guess_1_X.rvs()
 
-        #init_guess_1 = np.random.normal(loc=0.63, scale=0.2)
-        #init_guess_2 = np.random.normal(loc=9, scale=4)
+            #init_guess_2_X = get_truncated_normal(mean=0.3083247317, sd=0.1569015222, low=0, upp=1)
+            #init_guess_2 = init_guess_2_X.rvs()
 
-        #init_guess_1_X = get_truncated_normal(mean=0.63, sd=0.25, low=0.1, upp=1)
-        #init_guess_1=init_guess_1_X.rvs()
+            #init_guess_3_X = get_truncated_normal(mean=5.766115643, sd=2.218477811, low=1, upp=100)
+            #init_guess_3 = init_guess_3_X.rvs()
 
-        #init_guess_2_X = get_truncated_normal(mean=8.67, sd=3, low=3, upp=14)
-        #init_guess_2=init_guess_2_X.rvs()
-        '''
-        init_guess_1_X = get_truncated_normal(mean=0.73116224, sd=0.3801940063, low=0, upp=1)
-        init_guess_1 = init_guess_1_X.rvs()
+            #init_guess_1 = np.random.normal(loc=0.63, scale=0.2)
+            #init_guess_2 = np.random.normal(loc=9, scale=4)
 
-        init_guess_2_X = get_truncated_normal(mean=0.25169553, sd=0.15508659, low=0, upp=1)
-        init_guess_2 = init_guess_2_X.rvs()
+            #init_guess_1_X = get_truncated_normal(mean=0.63, sd=0.25, low=0.1, upp=1)
+            #init_guess_1=init_guess_1_X.rvs()
 
-        init_guess_3_X = get_truncated_normal(mean=3.188618423, sd=1.781965918, low=1, upp=100)
-        init_guess_3 = init_guess_3_X.rvs()'''
+            #init_guess_2_X = get_truncated_normal(mean=8.67, sd=3, low=3, upp=14)
+            #init_guess_2=init_guess_2_X.rvs()
+            '''
+            init_guess_1_X = get_truncated_normal(mean=0.73116224, sd=0.3801940063, low=0, upp=1)
+            init_guess_1 = init_guess_1_X.rvs()
+    
+            init_guess_2_X = get_truncated_normal(mean=0.25169553, sd=0.15508659, low=0, upp=1)
+            init_guess_2 = init_guess_2_X.rvs()
+    
+            init_guess_3_X = get_truncated_normal(mean=3.188618423, sd=1.781965918, low=1, upp=100)
+            init_guess_3 = init_guess_3_X.rvs()'''
 
 
-        X0 = [init_guess_1, init_guess_2, init_guess_3];
+            X0 = [init_guess_1, init_guess_2, init_guess_3];
 
 
-        res=minimize(fun=obFunc,x0=X0, method='L-BFGS-B',bounds=[(0,1),(0,1),(1,100)])
+            res=minimize(fun=obFunc,x0=X0, method='L-BFGS-B',bounds=[(0.2,1),(0.2,1),(2,12)])
 
-        NegLL=res.fun
+            if res.fun < NegLL:
+                NegLL = res.fun
 
-        Xfit=res.x
+                Xfit = res.x
 
         LL = -NegLL
         BIC = len(X0) * np.log(len(a)) + 2 * NegLL
