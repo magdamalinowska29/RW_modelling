@@ -1,11 +1,8 @@
 import numpy as np
-from maths import choose, generate_reward, get_truncated_normal
+from models.maths import choose, generate_reward
 from scipy.optimize import minimize
 import math
 import random
-
-
-from math import inf
 
 
 class Rescorla_Wagner_sep_temp_model():

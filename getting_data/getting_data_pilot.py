@@ -1,20 +1,30 @@
 import pandas as pd
 import numpy as np
+import os
+from os import listdir
 
-file_list=['C:/Users/magda/PycharmProjects/Rascola_Wagner/data/undefined_test_2_2024-05-30_14h49.52.558.csv',
-        'C:/Users/magda/PycharmProjects/Rascola_Wagner/data/undefined_test_2_2024-06-01_19h28.15.309.csv']
-    #'C:/Users/magda/PycharmProjects/Rascola_Wagner/data/undefined_test_2_2024-05-30_12h12.34.721.csv']
-    #'C:/Users/magda/PycharmProjects/Rascola_Wagner/data/undefined_test_2_2024-05-28_19h52.05.108.csv']
-    #'C:/Users/magda/PycharmProjects/Rascola_Wagner/data/undefined_test_2_2024-05-28_14h39.37.033.csv']
-    #'C:/Users/magda/PycharmProjects/Rascola_Wagner/data/undefined_test_2_2024-05-29_20h19.05.288.csv',
-            #'C:/Users/magda/PycharmProjects/Rascola_Wagner/data/undefined_test_2_2024-05-29_17h48.57.222.csv']
-            #'C:/Users/magda/PycharmProjects/Rascola_Wagner/data/undefined_test_2_2024-05-28_14h03.07.799.csv']
-           # 'C:/Users/magda/PycharmProjects/Rascola_Wagner/data/undefined_test_2_2024-05-28_14h39.37.033.csv']
-            #'C:/Users/magda/PycharmProjects/Rascola_Wagner/data/undefined_test_2_2024-05-25_11h42.30.286.csv',
-           #'C:/Users/magda/PycharmProjects/Rascola_Wagner/data/undefined_test_2_2024-05-27_17h53.02.337.csv',
-           #'C:/Users/magda/PycharmProjects/Rascola_Wagner/data/undefined_test_2_2024-05-25_12h42.39.315.csv',
-           #'C:/Users/magda/PycharmProjects/Rascola_Wagner/data/undefined_test_2_2024-05-25_18h22.35.977.csv',
-           #'C:/Users/magda/PycharmProjects/Rascola_Wagner/data/undefined_test_2_2024-05-26_10h41.19.362.csv']
+
+
+
+
+directory = "C:/Users/magda/PycharmProjects/RW_modelling/data/data_raw/"  # Replace with your directory.
+
+list_trial=listdir(directory)
+
+print(list_trial)
+
+file_list=[]
+
+for file_name in list_trial:
+    filepath = os.path.join(directory, file_name)
+    file_list.append(filepath)
+
+print(file_list)
+
+
+
+
+
 
 for file_n in range(len(file_list)):
 
@@ -27,7 +37,11 @@ for file_n in range(len(file_list)):
     sona_id_col=csvFile['survey.sonaID']
     sona_id_col=sona_id_col.tolist()
 
+
+
     sona_id=int(sona_id_col[1])
+
+
     #sona_id=1111
     """find the tutorial trials"""
 
@@ -515,14 +529,14 @@ for file_n in range(len(file_list)):
     df = pd.DataFrame(dict)
 
     # saving the dataframe
-    nam='C:/Users/magda/PycharmProjects/Rascola_Wagner/data/' + str(sona_id)+ '_example_results_new.csv'
+    nam='C:/Users/magda/PycharmProjects/RW_modelling/data/data_change_full/' + str(sona_id)+ '_change_full.csv'
 
     df.to_csv(nam)
 
     dict_2={'Action':subj_action,'Computer_Action': comp_action, 'Observation': subj_obs,'Computer_Observations': comp_obs, "stim1_prob": stim1_prob_list,"stim2_prob":stim2_prob_list,"stim3_prob": stim3_prob_list}
 
     df_2=pd.DataFrame(dict_2)
-    nam_2='C:/Users/magda/PycharmProjects/Rascola_Wagner/data/' + str(sona_id) +  '_example_results_action_observation.csv'
+    nam_2='C:/Users/magda/PycharmProjects/RW_modelling/data/data_action_full/' + str(sona_id) +  '_action_full.csv'
     df_2.to_csv(nam_2)
 
     """saving the results in csv files based on condition"""
@@ -533,13 +547,13 @@ for file_n in range(len(file_list)):
 
     # saving the dataframe
 
-    nam='C:/Users/magda/PycharmProjects/Rascola_Wagner/data/' + str(sona_id) + '_r_i_example_results_new.csv'
+    nam='C:/Users/magda/PycharmProjects/RW_modelling/data/data_change_r_i/' + str(sona_id) + '_r_i_change.csv'
     df_r_i.to_csv(nam)
 
     dict_2_r_i={'Action':subj_action_r_i,'Computer_Action': comp_action_r_i, 'Observation': subj_obs_r_i,'Computer_Observations': comp_obs_r_i,'stim1_prob': stim1_prob_r_i, 'stim2_prob':stim2_prob_r_i,'stim3_prob': stim3_prob_r_i}
 
     df_2_r_i=pd.DataFrame(dict_2_r_i)
-    nam='C:/Users/magda/PycharmProjects/Rascola_Wagner/data/' + str(sona_id) + '_r_i_example_results_action_observation.csv'
+    nam='C:/Users/magda/PycharmProjects/RW_modelling/data/data_action_r_i/' + str(sona_id) + '_r_i_action.csv'
     df_2_r_i.to_csv(nam)
 
     """saving the results in csv file"""
@@ -549,13 +563,13 @@ for file_n in range(len(file_list)):
     df_r_p = pd.DataFrame(dict_r_p)
 
     # saving the dataframe
-    nam='C:/Users/magda/PycharmProjects/Rascola_Wagner/data/' + str(sona_id) + '_r_p_example_results_new.csv'
+    nam='C:/Users/magda/PycharmProjects/RW_modelling/data/data_change_r_p/' + str(sona_id) + '_r_p_change.csv'
     df_r_p.to_csv(nam)
 
     dict_2_r_p={'Action':subj_action_r_p,'Computer_Action': comp_action_r_p, 'Observation': subj_obs_r_p,'Computer_Observations': comp_obs_r_p,'stim1_prob': stim1_prob_r_p, 'stim2_prob':stim2_prob_r_p,'stim3_prob': stim3_prob_r_p}
 
     df_2_r_p=pd.DataFrame(dict_2_r_p)
-    nam='C:/Users/magda/PycharmProjects/Rascola_Wagner/data/' + str(sona_id) + '_r_p_example_results_action_observation.csv'
+    nam='C:/Users/magda/PycharmProjects/RW_modelling/data/data_action_r_p/' + str(sona_id) + '_r_p_action.csv'
     df_2_r_p.to_csv(nam)
 
     """saving the results in csv file"""
@@ -565,13 +579,13 @@ for file_n in range(len(file_list)):
     df_pe_i = pd.DataFrame(dict_pe_i)
 
     # saving the dataframe
-    nam='C:/Users/magda/PycharmProjects/Rascola_Wagner/data/' + str(sona_id) + '_pe_i_example_results_new.csv'
+    nam='C:/Users/magda/PycharmProjects/RW_modelling/data/data_change_pe_i/' + str(sona_id) + '_pe_i_change.csv'
     df_pe_i.to_csv(nam)
 
     dict_2_pe_i={'Action':subj_action_pe_i,'Computer_Action': comp_action_pe_i, 'Observation': subj_obs_pe_i,'Computer_Observations': comp_obs_pe_i,'stim1_prob': stim1_prob_pe_i, 'stim2_prob':stim2_prob_pe_i,'stim3_prob': stim3_prob_pe_i}
 
     df_2_pe_i=pd.DataFrame(dict_2_pe_i)
-    nam='C:/Users/magda/PycharmProjects/Rascola_Wagner/data/' + str(sona_id) + '_pe_i_example_results_action_observation.csv'
+    nam='C:/Users/magda/PycharmProjects/RW_modelling/data/data_action_pe_i/' + str(sona_id) + '_pe_i_action.csv'
     df_2_pe_i.to_csv(nam)
 
     """saving the results in csv file"""
@@ -581,13 +595,13 @@ for file_n in range(len(file_list)):
     df_pe_p = pd.DataFrame(dict_pe_p)
 
     # saving the dataframe
-    nam='C:/Users/magda/PycharmProjects/Rascola_Wagner/data/' + str(sona_id) + '_pe_p_example_results_new.csv'
+    nam='C:/Users/magda/PycharmProjects/RW_modelling/data/data_change_pe_p/' + str(sona_id) + '_pe_p_change.csv'
     df_pe_p.to_csv(nam)
 
     dict_2_pe_p={'Action':subj_action_pe_p,'Computer_Action': comp_action_pe_p, 'Observation': subj_obs_pe_p,'Computer_Observations': comp_obs_pe_p,'stim1_prob': stim1_prob_pe_p, 'stim2_prob':stim2_prob_pe_p,'stim3_prob': stim3_prob_pe_p}
 
     df_2_pe_p=pd.DataFrame(dict_2_pe_p)
-    nam='C:/Users/magda/PycharmProjects/Rascola_Wagner/data/' + str(sona_id) + '_pe_p_example_results_action_observation.csv'
+    nam='C:/Users/magda/PycharmProjects/RW_modelling/data/data_action_pe_p/' + str(sona_id) + '_pe_p_action.csv'
     df_2_pe_p.to_csv(nam)
 
 
