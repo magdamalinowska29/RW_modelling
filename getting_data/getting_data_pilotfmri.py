@@ -1,3 +1,5 @@
+'''this is a script that transforms behavioural data recorded in the fMRI experiment to the format needed for analysis'''
+
 import pandas as pd
 import numpy as np
 
