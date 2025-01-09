@@ -1,10 +1,9 @@
+'''this is a script to transform data from the raw pavlovia output to the format needed for modelling analysis'''
+
 import pandas as pd
 import numpy as np
 import os
 from os import listdir
-
-
-
 
 
 directory = "C:/Users/magda/PycharmProjects/RW_modelling/data/data_raw/"  # Replace with your directory.
