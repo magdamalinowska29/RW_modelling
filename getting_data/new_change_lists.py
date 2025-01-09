@@ -1,3 +1,5 @@
+'''this is a script to generate the changepoint data like the one fromt he experiment'''
+
 import random
 
 
