@@ -1,4 +1,6 @@
-Thir repository contains all the files needed to perform behavioural anallysis using Rescorla-Wagner models as featured in my Master's thesis.
+# RW_modelling
+
+This repository contains all the files needed to perform behavioural anallysis using Rescorla-Wagner models as featured in my Master's thesis.
 
 ### PREPROCESSING ###
 
